@@ -20,18 +20,26 @@ def list_animals():
 
 @app.route("/animal/ <animal_id>")
 def get_animal(animal_id):
-    return animal_db [animal_id]:
+    return animal_db[animal_id]
 
 @app.route("/animal/add", methods= ['POST'])
 def add_animal ():
     req_data = request.get_json()
-    new_animal = req_data['animal']
+    new_animal = req_data["animal"]
     new_id = len(animal_db) + 1
     new_animal_data = { str(new_id) : new_animal }
     animal_db.update(new_animal_data)
     return "The animal was added successcully"
+
+@app.route("/animal/update", methods= ['POST'])
+def update_animal():
+    req_data = request.get_json()
+    animal_db.update (req_data)
+    return "The animal is updated"
+    
+
     
     
-    if __name__ == "__main__":
-       app.run(host = "127.0.0.1")
+if __name__ == "__main__":
+    app.run(host = "127.0.0.1")
         
